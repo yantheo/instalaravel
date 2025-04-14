@@ -7,7 +7,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 
-Route::get('/', [PostController::class, 'index'])->middleware('auth')->name('name');
+Route::get('/', [PostController::class, 'index'])->middleware('auth')->name('home');
+
+Route::get('home', function(){ 
+    return redirect('/');
+})->name('home');
+
 
 Auth::routes();
 
@@ -27,7 +32,7 @@ Route::patch('/profile/{user}', [App\Http\Controllers\ProfileController::class, 
 
 //COMMENT ROUTES
 Route::post('/post/{post}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
-Route::delete('/post/{post}/{comment}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
+Route::delete('/comments/{comment}', [App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
 
 //LIKES ROUTES
 Route::post('/post/{post}/likes', [App\Http\Controllers\LikeController::class, 'store'])->name('likes.store');

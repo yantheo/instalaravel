@@ -29,7 +29,7 @@ class CommentController extends Controller
             'user_id' => auth()->id(),
         ]);
 
-        return redirect('/posts' . $post->id);
+        return redirect('/posts/' . $post->id);
     }
 
     /**

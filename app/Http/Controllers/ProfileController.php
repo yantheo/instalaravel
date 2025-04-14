@@ -13,7 +13,7 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(User $user)
     {
         return view('profiles.index', compact('user'));
     }
